@@ -23,3 +23,5 @@ işlemine izin verilmeyecektir.
 • Eğer ilgili departmanın altında tanımlı çalışan varsa departman silinemeyecektir.
 
 • Admin, login arayüzünden sisteme giriş yapabilcektir.
+
+• Ayrıca admin ve personel, Angular filtrelemesi sayesinde ad,soyad ve departmana göre filtreleme yapabilecektir.
