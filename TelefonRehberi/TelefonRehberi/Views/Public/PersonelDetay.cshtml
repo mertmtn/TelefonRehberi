@@ -1,0 +1,58 @@
+﻿@model TelefonRehberi.ViewModels.PersonelVM
+
+@{
+    ViewBag.Title = "Personel Detay";
+    Layout = "~/Views/Shared/_PublicUIMaster.cshtml";
+}
+
+<h2>Personel Detay - @Model.PersonelAdi @Model.PersonelSoyadi</h2>
+
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            Personel Adı:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonelAdi)
+        </dd>
+
+        <dt>
+            Personel Soyadı:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonelSoyadi)
+        </dd>
+
+        <dt>
+            Telefon Numarası:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonelTelefon)
+        </dd>
+        <dt>
+            Departmanı:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Departman)
+        </dd>
+
+        <dt>
+            Yöneticisi:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Yonetici)
+        </dd>
+
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Personel Listesine Git", "PersonelListesi")
+</p>

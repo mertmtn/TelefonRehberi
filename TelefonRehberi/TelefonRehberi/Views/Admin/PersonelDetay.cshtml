@@ -1,0 +1,65 @@
+﻿@model TelefonRehberi.ViewModels.PersonelVM
+
+@{
+    ViewBag.Title = "PersonelDetay";
+    Layout = "~/Views/Shared/_AdminUIMaster.cshtml";
+    if (Session["AdminOturumu"] == null)
+    {
+        Response.Redirect("~/Login/Giris");
+    }
+}
+
+<h2>PersonelDetay</h2>
+
+<div>
+     
+    <hr />
+    <dl class="dl-horizontal">        
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonelAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonelAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonelSoyadi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonelSoyadi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonelTelefon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonelTelefon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Yonetici)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Yonetici)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Departman)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Departman)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Personel Güncelle", "PersonelGuncelle", new {  id = Model.PersonelID  }) |
+    @Html.ActionLink("Personel Listesine Git", "PersonelListele")
+    
+</p>

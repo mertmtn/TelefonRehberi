@@ -1,0 +1,74 @@
+﻿@model IEnumerable<TelefonRehberi.Models.Personel>
+
+@{
+    ViewBag.Title = "Personel Listesi";
+    Layout = "~/Views/Shared/_PublicUIMaster.cshtml";
+}
+
+<script src="~/Content/JS/angular.min.js"></script>
+
+<h2>Personel Listesi</h2>
+<h3>Aşağıdaki Kriterlere Göre Filtreleme Yapabilirsiniz</h3>
+<hr />
+<div ng-app="myApp" ng-controller="myControllerPersonel" >
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="control-label col-md-4">
+                Ad:
+            </div>
+            <div class="col-md-8">
+                <input class="form-control" type="text" name="ad" ng-model="ad" />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="control-label col-md-4">
+                Soyad:
+            </div>
+            <div class="col-md-8">
+                <input class="form-control" type="text" name="soyad" ng-model="soyad" />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="control-label col-md-4">
+                Departman:
+            </div>
+            <div class="col-md-8">
+                <select class="form-control" ng-model="departman">
+                    <option></option>
+                    <option ng-repeat="d in departmanList">{{d.DepartmanAdi}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+ 
+    <hr />
+    <div class="table-responsive">
+        <table class="table table-hover table-condensed">
+            <tr>
+                <th>
+                    Personel Adı
+                </th>
+                <th>
+                    Personel Soyadı
+                </th>
+                <th>
+                    Telefon
+                </th>
+
+                <th>İşlemler</th>
+            </tr>
+            <tr ng-repeat="personel in personelList | filter : {PersonelAdi: ad, PersonelSoyadi:soyad,DepartmanAdi:departman}">
+                <td>{{personel.PersonelAdi}}</td>
+                <td>{{personel.PersonelSoyadi}}</td>
+                <td>{{personel.PersonelTelefonNo}}</td>
+                <td>
+                    <a href="/Public/PersonelDetay/{{personel.PersonelID}}" role="button" class="btn btn-warning">Detay Görüntüle</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+  
+</div>
+ 
+<script src="~/Content/JS/getlistangular.js"></script>

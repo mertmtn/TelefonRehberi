@@ -1,0 +1,27 @@
+﻿@model TelefonRehberi.Models.Departman
+
+@{
+    ViewBag.Title = "Departman Sil";
+    Layout = "~/Views/Shared/_AdminUIMaster.cshtml";
+    if (Session["AdminOturumu"] == null)
+    {
+        Response.Redirect("~/Login/Giris");
+    }
+}
+
+<h2>Departman Sil</h2>
+<div>
+    
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        
+
+        <h3>Departmanı Silmek İstediğinizden Emin Misiniz?</h3>
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Departman Listesine Git", "DepartmanListesi")
+        </div>
+        <label class="danger">@ViewBag.Message</label>
+    }
+</div>

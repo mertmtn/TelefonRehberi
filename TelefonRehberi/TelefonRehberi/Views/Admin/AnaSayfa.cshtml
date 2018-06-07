@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "Admin Ana Sayfa";
+    Layout = "~/Views/Shared/_AdminUIMaster.cshtml";
+    if (Session["AdminOturumu"] == null)
+    {
+        Response.Redirect("~/Login/Giris");
+    }
+}
+
+<h2>Admin Ana Sayfa</h2>
+

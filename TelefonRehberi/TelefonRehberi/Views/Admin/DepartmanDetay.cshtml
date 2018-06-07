@@ -1,0 +1,31 @@
+﻿@model TelefonRehberi.Models.Departman
+
+@{
+    ViewBag.Title = "DepartmanDetay";
+    Layout = "~/Views/Shared/_AdminUIMaster.cshtml";
+    if (Session["AdminOturumu"] == null)
+    {
+        Response.Redirect("~/Login/Giris");
+    }
+}
+
+<h2>Departman Detay - @Model.DepartmanAdi</h2>
+
+<div>
+    <h4>Departman</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DepartmanAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DepartmanAdi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Departman Güncelle", "DepartmanGuncelle", new {  id = Model.DepartmanID  }) |
+    @Html.ActionLink("Departman Listesine Git", "DepartmanListesi")
+</p>

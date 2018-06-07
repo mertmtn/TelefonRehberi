@@ -1,0 +1,44 @@
+﻿@model TelefonRehberi.Models.Departman
+
+@{
+    ViewBag.Title = "Departman Güncelle";
+    Layout = "~/Views/Shared/_AdminUIMaster.cshtml";
+    if (Session["AdminOturumu"] == null)
+    {
+        Response.Redirect("~/Login/Giris");
+    }
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <h4>Departman Güncelle</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.DepartmanAdi, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.DepartmanAdi, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DepartmanAdi, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Güncelle" class="btn btn-warning" />
+                </div>
+            </div>
+            <label class="danger">@ViewBag.Message</label> 
+        </div>
+        <div class="col-md-4"></div>
+        </div>
+}
+
+<div>
+    @Html.ActionLink("Departman Listesine Git", "DepartmanListesi")
+</div>

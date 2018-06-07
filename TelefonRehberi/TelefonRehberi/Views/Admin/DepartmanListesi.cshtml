@@ -1,0 +1,43 @@
+﻿@model IEnumerable<TelefonRehberi.Models.Departman>
+
+@{
+    ViewBag.Title = "DepartmanListesi";
+    Layout = "~/Views/Shared/_AdminUIMaster.cshtml";
+    if (Session["AdminOturumu"] == null)
+    {
+        Response.Redirect("~/Login/Giris");
+    }
+}
+
+<h2>Departman Listesi</h2>
+
+<p>
+    @Html.ActionLink("Yeni Departman Ekle", "DepartmanEkle")
+</p>
+<div class="table-responsive">
+    <table class="table table-hover table-condensed">
+        <tr>
+            <th>
+                Departman Adı
+            </th>
+            <th>İşlemler</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepartmanAdi)
+                </td>
+                <td>
+                    <a href="@Url.Action("DepartmanGuncelle","Admin", new { id=item.DepartmanID  })" role="button" class="btn btn-primary">Güncelle</a>
+                    <a href="@Url.Action("DepartmanDetay", "Admin", new { id = item.DepartmanID })" role="button" class="btn btn-warning">Detay Görüntüle</a>
+                    <a href="@Url.Action("DepartmanSil", "Admin", new { id = item.DepartmanID })" role="button" class="btn btn-danger">Sil</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+

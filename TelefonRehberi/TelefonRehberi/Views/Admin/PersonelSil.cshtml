@@ -1,0 +1,28 @@
+﻿@model TelefonRehberi.ViewModels.PersonelVM
+
+@{
+    ViewBag.Title = "Personel Sil";
+    Layout = "~/Views/Shared/_AdminUIMaster.cshtml";
+    if (Session["AdminOturumu"] == null )
+    {
+        Response.Redirect("~/Login/Giris");
+    }
+}
+
+<h2>Personel Sil</h2>
+
+
+<div>
+    
+ 
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        <h3>Personeli Silmek İstediğinize Emin Misiniz?</h3>
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Listeye Dön", "PersonelListele")
+        </div>
+        <label class="danger">@ViewBag.Message</label> 
+    }
+</div>

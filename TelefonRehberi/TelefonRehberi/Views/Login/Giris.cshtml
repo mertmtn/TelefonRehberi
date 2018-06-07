@@ -1,0 +1,53 @@
+﻿@model TelefonRehberi.Models.Login
+
+@{
+    ViewBag.Title = "Admin Girişi";
+    Layout = "~/Views/Shared/_PublicUIMaster.cshtml";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+       
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <h2>Admin Giriş Sayfası</h2>
+            <h4>Bilgilerinizi Giriniz</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label class="control-label col-md-4">Kullanıcı Adı</label>
+               
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control col-md-5" } })
+                    @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-4">Şifre</label>               
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control col-md-5" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Giriş Yap" class="btn btn-primary" />
+                    <br />
+                    @ViewBag.Message
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+
+
+    </div>
+}
+
